@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div th:insert="~{fragments/navHeader :: navigation-header}">
+
+</div>
+<body>
+
+<script th:inline="javascript">
+
+
+    let maleCount = [[${maleClubMembersCount}]];
+    let femaleCount=[[${femaleClubMembersCount}]];
+
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(function () {
+        drawGenderChart(maleCount,femaleCount);
+    });
+
+    let zeroTo24Years=[[${zeroTo24Years}]];
+    let twentyFiveTo49Years=[[${twentyFiveTo49Years}]];
+    let fiftyTo74Years=[[${fiftyTo74Years}]];
+    let seventyFiveTo100Years=[[${seventyFiveTo100Years}]];
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(function () {
+        drawAgeChart(zeroTo24Years,twentyFiveTo49Years,fiftyTo74Years,seventyFiveTo100Years);
+    });
+
+</script>
+<div class="grid-container">
+<div id="gender-piechart"></div>
+
+<div id="age-piechart"></div>
+
+</div>
+
+</body>
+</html>
